@@ -26,9 +26,14 @@ app.get('/', function(req, res){
   res.render('home', {});
 });
 
+app.use((err, _req, res, _next) => {
+  if (err.status) {
+    return res.status(err.status).send(err);
+  }
 
-
-
+  console.error(err);
+  res.sendStatus(500);
+});
 
 var port = 3000;
 app.listen(port, function(){

@@ -1,17 +1,44 @@
-<% include partials/header %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
 
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
 
-    <form class="" action="/signup" method="post">
-      <%# Add form validations for:
-      Username: Required. Must be more than 6 characters, must start with a letter, and no punctuation.
-      Password: Required. Must be more than 8 characters with atleast One letter, one number, and one special character (!?/.,')
-      Email: Required. Must be formatted like an email, (something @ something . something)
-      First Name: Required.
-      Last Name: Required.
-      Phone Number: Required. Must be a 10 digit number formatted like: 999-888-9898%>
-
+  </head>
+<body>
+    <form class="form-group" action="/signup" method="post">
+      <label for="username">Username</label>
+      <input class="form-control" type="text" id="username" name="username"></input>
+      <label for="password">Password</label>
+      <input class="form-control" type="text" id="password" name="password"></input>
+      <label for="email">Email</label>
+      <input class="form-control" type="email" id="email" name="email"></input>
+      <label for="firstname">First name</label>
+      <input class="form-control" type="text" id="firstname" name="firstname"></input>
+      <label for="lastname">Last name</label>
+      <input class="form-control" type="text" id="lastname" name="lastname"></input>
+      <label for="phone">Phone Number</label>
+      <input class="form-control" type="tel" id="phone" name="phone"></input>
+      <button type="submit">Submit</button>
     </form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
+</body>
 
-<% include partials/footer %>
+</html>
