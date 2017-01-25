@@ -1,7 +1,7 @@
-'use strict';
 
-var express = require('express');
-var router = express.Router();
+
+const express = require('express');
+const router = express.Router();
 const ev = require('express-validation');
 const validations = require('../validations/users');
 
@@ -17,21 +17,18 @@ const validations = require('../validations/users');
 // STRETCH: Hook up a database that you insert these values into after you've validated them.
 // REMINDER: Don't store passwords in plain text.. Make sure you hash it first!
 
-router.get('/', function(req, res){
+router.get('/', (req, res) => {
   // Handle initial rendering here.
   res.render('signup', {});
 });
 //
-router.post('/', ev(validations.post),  function(req, res){
-
-  //if errors redirect to /
+router.post('/', ev(validations.post), (req, res) => {
+  // if errors redirect to /
   // still don't know how to get the errors
   // out of Joi but they're displaying on the
   // page via the error app.use in index.js
-  //if valid render signup
+  // if valid render signup
   res.render('signup');
-
-
 });
 
 

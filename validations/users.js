@@ -1,4 +1,4 @@
-'use strict';
+
 
 const Joi = require('joi');
 
@@ -14,9 +14,9 @@ module.exports.post = {
       .label('password')
       .required()
       .trim()
-      .regex(/^[a-zA-Z]/)
+      .regex(/[a-zA-Z]/)
       .regex(/\d/)
-      .regex(/^[,.]/) //see note
+      .regex(/[!?/.,']/)
       .min(8),
     email: Joi.string()
       .label('email')
@@ -33,19 +33,13 @@ module.exports.post = {
       .trim(),
     phone: Joi.string()
       .required()
-      .regex(/^[2-9]\d{2}-\d{3}-\d{4}$/)
-  }
+      .regex(/^[2-9]\d{2}-\d{3}-\d{4}$/),
+  },
 };
 
 // Password: Required. Must be more than 8 characters
 // with atleast One letter, one number, and one special
 // character (!?/.,')
-
- // .regex(/^[!?/.,']/)
- //this doesn't work because the form returns
- // &#x21;&#x3f;&#x5c;&#x5c;&#x2f;.,&#x27;
- // for !?/.,'
-
 // Username: Required. Must be more than 6 characters,
 // must start with a letter, and no punctuation.
 // Email: Required. Must be formatted like an email,
