@@ -136,7 +136,7 @@ function checkPhone(info, req) {
   const str = req.body.phone;
   let goodNum = false;
 
-  if (str.match(/[2-9]{3}-\d{3}-\d{4}/)) {
+  if (str.match(/^[2-9]\d{2}-\d{3}-\d{4}/)) {
     goodNum = true;
   }
   if (goodNum) {
