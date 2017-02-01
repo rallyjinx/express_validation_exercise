@@ -1,47 +1,16 @@
+/* eslint no-param-reassign: 0 */
+'use strict';
+
 const express = require('express');
 
 const router = express.Router();
-
-function checkPost(req) {
-  const info = {};
-  info.hasError = false;
-  info.error = {};
-
-  // Required Checks
-  checkRequired(info, req);
-
-  // Email Check
-  checkEmail(info, req);
-
-  return info;
-}
-
-router.get('/', (req, res) => {
-  res.render('add_post', {
-    hasError: false,
-    title: '',
-    author: '',
-    email: '',
-    description: '',
-  });
-});
-router.post('/', (req, res) => {
-  const postInfo = checkPost(req); // Run error checking.
-
-  if (!postInfo.hasError) {
-    // Validations passed -- Submit into database and redirect.
-    res.redirect('/');
-  } else {
-    res.render('add_post', postInfo);
-  }
-});
 
 function checkEmail(info, req) {
   const str = req.body.email;
   let atFound = false;
   let dotFound = false;
 
-  for (var i = 1; i < str.length; i++) {
+  for (let i = 1; i < str.length; i++) {
     if (str[i] === '@' || atFound) {
       if (atFound && str[i] === '.') {
         // This email has an @ and dot in the right order.
@@ -74,6 +43,40 @@ function checkRequired(info, req) {
     }
   }
 }
+function checkPost(req) {
+  const info = {};
+  info.hasError = false;
+  info.error = {};
+
+  // Required Checks
+  checkRequired(info, req);
+
+  // Email Check
+  checkEmail(info, req);
+
+  return info;
+}
+
+router.get('/', (req, res) => {
+  res.render('add_post', {
+    hasError: false,
+    title: '',
+    author: '',
+    email: '',
+    description: '',
+  });
+});
+
+router.post('/', (req, res) => {
+  const postInfo = checkPost(req); // Run error checking.
+
+  if (!postInfo.hasError) {
+    // Validations passed -- Submit into database and redirect.
+    res.redirect('/');
+  } else {
+    res.render('add_post', postInfo);
+  }
+});
 
 
 module.exports = router;

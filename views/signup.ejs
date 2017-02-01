@@ -22,19 +22,38 @@
 <body>
     <form class="form-group" action="/signup" method="post">
       <label for="username">Username</label>
-      <input class="form-control" type="text" id="username" name="username"></input>
+      <input class="form-control" type="text" id="username" name="username" value="<%= username %>"></input>
       <label for="password">Password</label>
-      <input class="form-control" type="text" id="password" name="password"></input>
+      <input class="form-control" type="text" id="password" name="password" value="<%= password %>"></input>
       <label for="email">Email</label>
-      <input class="form-control" type="email" id="email" name="email"></input>
+      <input class="form-control" type="email" id="email" name="email" value="<%= email %>"></input>
       <label for="firstname">First name</label>
-      <input class="form-control" type="text" id="firstname" name="firstname"></input>
+      <input class="form-control" type="text" id="firstname" name="firstname" value="<%= firstname %>"></input>
       <label for="lastname">Last name</label>
-      <input class="form-control" type="text" id="lastname" name="lastname"></input>
+      <input class="form-control" type="text" id="lastname" name="lastname" value="<%= lastname %>"></input>
       <label for="phone">Phone Number</label>
-      <input class="form-control" type="tel" id="phone" name="phone"></input>
+      <input class="form-control" type="tel" id="phone" name="phone" value="<%= phone %>"</input>
       <button type="submit">Submit</button>
     </form>
+
+    <% if(hasError) { %>
+      <div class="row">
+        <div class="col-md-6 errorBlock">
+          <% for(var item in error) { %>
+            <strong><h6><%= item %></h6></strong>
+            <ul>
+            <% for(var i = 0; i < error[item].length; i++) { %>
+                <li>
+                  <i>
+                    <%= error[item][i].message %>
+                  </i>
+                </li>
+            <% } %>
+            </ul>
+          <% } %>
+        </div>
+      </div>
+    <% } %>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
