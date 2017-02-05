@@ -69,7 +69,7 @@ function checkUsername(info, req) {
       info.error.username = [];
     }
     info.hasError = true;
-    info.error.username.push({ message: 'invalid username' });
+    info.error.username.push({ message: 'Username must be more than 6 characters, start with a letter, and contain no punctuation.' });
   }
 }
 
@@ -94,7 +94,7 @@ function checkEmail(info, req) {
       info.error.email = [];
     }
     info.hasError = true;
-    info.error.email.push({ message: 'invalid email' });
+    info.error.email.push({ message: 'Must be formatted like an email ____@___.____' });
   }
 }
 
@@ -127,7 +127,7 @@ function checkPassword(info, req) {
       info.error.password = [];
     }
     info.hasError = true;
-    info.error.password.push({ message: 'invalid password' });
+    info.error.password.push({ message: 'Password must be more than 8 characters and include at least one letter, one number, and one special character (!?/.,\')' });
   }
 }
 
@@ -146,7 +146,7 @@ function checkPhone(info, req) {
       info.error.phone = [];
     }
     info.hasError = true;
-    info.error.phone.push({ message: 'invalid phone' });
+    info.error.phone.push({ message: 'Must be a 10 digit number formatted like: ###-###-####' });
   }
 }
 
